@@ -19,7 +19,7 @@ export const Info = ({ isPro }: InfoProps) => {
     setIsMounted(true);
   }, []);
 
-  if (!isMounted) {
+  if (!isMounted && !isLoaded) {
     return (
       <div className="flex items-center gap-x-4">
         <div className="w-[60px] h-[60px] relative">
