@@ -20,7 +20,6 @@ export const Info = ({ isPro }: InfoProps) => {
   }, []);
 
   if (!isMounted && !isLoaded) {
-    console.log("Organization Image1 =>", organization?.imageUrl);
     return (
       <div className="flex items-center gap-x-4">
         <div className="w-[60px] h-[60px] relative">
