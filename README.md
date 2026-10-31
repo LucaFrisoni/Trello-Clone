@@ -1,4 +1,4 @@
-# Fullstack Trello Clone: Next.js 14, Server Actions, React, Prisma, Stripe, Tailwind, MySQL
+# Fullstack Trello Clone: Next.js 14, Server Actions, React, Prisma, Stripe, Tailwind, PostgreSQL
 
 Key Features:
 - Auth 
@@ -15,7 +15,7 @@ Key Features:
 - Board limit for every organization
 - Stripe subscription for each organization to unlock unlimited boards
 - Landing page
-- MySQL DB
+- PostgreSQL DB
 - Prisma ORM
 - shadcnUI & TailwindCSS
 
@@ -53,7 +53,7 @@ STRIPE_WEBHOOK_SECRET=
 
 ### Setup Prisma
 
-Add MySQL Database (I used PlanetScale)
+Add a PostgreSQL database (Supabase is used in production). On Vercel, use Supabase's **Session pooler** connection string as `DATABASE_URL`: the direct `db.<ref>.supabase.co` host is IPv6-only and Vercel functions cannot reach it.
 
 ```shell
 npx prisma generate
@@ -74,3 +74,6 @@ Running commands with npm `npm run [command]`
 | command         | description                              |
 | :-------------- | :--------------------------------------- |
 | `dev`           | Starts a development instance of the app |
+| `test`          | Runs the test suite                      |
+
+The server action tests need a disposable database and are skipped otherwise: set `TEST_DATABASE_URL` to it and apply the schema with `npx prisma db push`. Never point it at a real database.

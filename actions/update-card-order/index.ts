@@ -22,6 +22,23 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   let updatedCards;
 
   try {
+    const listIds = Array.from(new Set(items.map((card) => card.listId)));
+    const allowedLists = await db.list.count({
+      where: {
+        id: { in: listIds },
+        board: {
+          id: boardId,
+          orgId,
+        },
+      },
+    });
+
+    if (allowedLists !== listIds.length) {
+      return {
+        error: "List not found",
+      };
+    }
+
     const transaction = items.map((card) => 
       db.card.update({
         where: {

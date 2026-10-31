@@ -25,15 +25,6 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     };
   }
 
-  const canCreate = await hasAvailableCount();
-  const isPro = await checkSubscription();
-
-  if (!canCreate && !isPro) {
-    return {
-      error: "You have reached your limit of free boards. Please upgrade to create more."
-    }
-  }
-
   const { title, image } = data;
 
   const [
@@ -53,6 +44,15 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   let board;
 
   try {
+    const canCreate = await hasAvailableCount();
+    const isPro = await checkSubscription();
+
+    if (!canCreate && !isPro) {
+      return {
+        error: "You have reached your limit of free boards. Please upgrade to create more."
+      }
+    }
+
     board = await db.board.create({
       data: {
         title,

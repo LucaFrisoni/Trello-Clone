@@ -7,10 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "test": "vitest run"
   },
   "dependencies": {
-    "@clerk/nextjs": "^4.26.2",
+    "@clerk/nextjs": "^4.31.8",
     "@hello-pangea/dnd": "^16.3.0",
     "@prisma/client": "^5.9.1",
     "@radix-ui/react-accordion": "^1.1.2",
@@ -27,7 +28,7 @@
     "date-fns": "^2.30.0",
     "lodash": "^4.17.21",
     "lucide-react": "^0.292.0",
-    "next": "14.0.1",
+    "next": "^14.2.35",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sonner": "^1.2.0",
@@ -40,16 +41,19 @@
     "zustand": "^4.4.6"
   },
   "devDependencies": {
+    "@testing-library/react": "^14.3.1",
     "@types/lodash": "^4.14.201",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
-    "eslint-config-next": "14.0.1",
+    "eslint-config-next": "^14.2.35",
+    "jsdom": "^25.0.1",
     "postcss": "^8",
     "prisma": "^5.9.1",
     "tailwindcss": "^3.3.0",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^2.1.9"
   }
 }
