@@ -53,7 +53,7 @@ STRIPE_WEBHOOK_SECRET=
 
 ### Setup Prisma
 
-Add a PostgreSQL database (Supabase is used in production). On Vercel, use Supabase's **Session pooler** connection string as `DATABASE_URL`: the direct `db.<ref>.supabase.co` host is IPv6-only and Vercel functions cannot reach it.
+Add a PostgreSQL database (Supabase is used in production). On Vercel, use Supabase's **Transaction pooler** connection string (port 6543) as `DATABASE_URL`, ending in `?pgbouncer=true&connection_limit=1`: the direct `db.<ref>.supabase.co` host is IPv6-only and Vercel functions cannot reach it.
 
 ```shell
 npx prisma generate
